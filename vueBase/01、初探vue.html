@@ -10,11 +10,11 @@
     <!-- <p id="pp">嘿嘿</p> -->
     <p id="pp">{{str}}</p>
   </div>
-  <script src="./js/vue.js"></script>
+  <script src="../js/vue.js"></script>
   <!-- <script src="./js/jQuery1.10.1.min.js"></script> -->
   <script>
     //原生
-    // let str = '我爱你赵丽颖'  //ajax请求获取的数据省略
+    // let str = '你好啊，李银河！'  //ajax请求获取的数据省略
     // let pp = document.getElementById('pp')
     // pp.innerHTML = str
 
@@ -29,21 +29,14 @@
       //配置对象
       el:'#app', //挂载点是上面的div
       data:{
-        str:''
-      }
+        str:'你好啊，李银河！'
+      },
     })
 
 
     //三者对比，vue的性能是最好的
     //原生的和jquery,他们都获取了dom，而且在修改dom元素内容的时候，都会重绘dom树，尤其是对多个元素
     //vue和原生及jquery是不一样的，它采用了文档碎片把整个dom树的重绘从多次变成了1次。所以效率很高
-
-    
-
-
-
-
-
-  </script>
+</script>
 </body>
 </html>
