@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p v-if="isOk">表白成功</p>
+    <p v-else>表白失败</p>
+
+
+    <p v-show="isOk">求婚成功</p>
+    <p v-show="!isOk">求婚失败</p>
+
+
+    <button @click="isOk = !isOk">点击反转</button>
+
+    <!-- v-if 和 v-show 都可以达到条件渲染的效果，但是他们的是有很大区别的，后期两个用的都比较多 
+    vif条件渲染的时候，条件为真的被渲染，条件为假的不渲染，其实条件为假的元素根本不存在dom上，（内存中没有）
+    vshow，条件为真的被渲染，条件为假的不渲染，但是它是真实在dom上存在的，只是采用样式display:none去做的切换（内存中有）
+
+    以后如果说切换的频率很高，用vshow
+    切换频率不高，用vif
+    -->
+
+  </div>
+  <script src="./js/vue.js"></script>
+  <script>
+    new Vue({
+      el:'#app',
+      data(){
+        return {
+          isOk:false
+        }
+      }
+    })
+  </script>
+</body>
+</html>

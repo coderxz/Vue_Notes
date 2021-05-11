@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    li{
+      background-color: #000;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+      <ul @click='demo'>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+      </ul>
+    </div>
+  </div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.3/vue.common.dev.js"></script>
+  <script>
+    const vm = new Vue({
+      el:'#app',
+      data() {
+        return {
+          
+        }
+      },
+      methods:{
+        test1(e,a){
+          console.log(a+'d');
+        },
+        test(e){
+          console.log(e.target.innerHTML);
+        },
+        demo(e){
+          //利用事件委派给子元素添加相同的点击事件，e.target为当前触发事件的子元素
+          e.target.onclick = this.test
+        }
+      }
+    })
+  </script>
+</body>
+</html>

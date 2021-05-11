@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" placeholder="请输入过滤的条件" v-model="keyword">
+    <ul>
+      <li v-for="(person,index) in newPersons" :key="person.id">
+        {{person.id}} ---- {{person.name}} ---- {{person.age}}
+      </li>
+    </ul>
+    <!-- <button @click="test(1)">按年龄升序</button>
+    <button @click="test(2)">按年龄降序</button>
+    <button @click="test(0)">按原样排序</button> -->
+
+    <button @click="sortType = 1">按年龄升序</button>
+    <button @click="sortType = 2">按年龄降序</button>
+    <button @click="sortType = 0">按原样排序</button>
+    
+  </div>
+  <script src="./js/vue.js"></script>
+  <script>
+
+    Vue.config.productionTip = false  //消除启动浏览器的生产提示信息
+
+    const vm = new Vue({
+      el:'#app',
+      data(){
+        return {
+          keyword:'',
+          persons:[
+            {id:1,name:'zhaoliying',age:33},
+            {id:2,name:'yangmi',age:34},
+            {id:3,name:'qiwei',age:40},
+            {id:4,name:'dilireba',age:28}
+          ],
+
+          //排序首先要设计这个数据，标志用户点击的到底是什么排序类型
+          sortType:0     //0  1  2  0代表原样  1代表升序  2代表降序
+        }
+      },
+
+      methods: {
+        // test(num){
+        //   //函数当中如果只有一行代码，可以省略函数，直接把代码写在上面
+        //   this.sortType = num
+        // }
+      },
+
+      computed:{
+        newPersons(){
+          //从vm身上获取keyword和persons
+          let {keyword,persons,sortType} = this
+
+          //根据获取的这两个数据计算新的数据
+          //函数和方法最主要的是三要素
+          //功能    从原数组当中过滤出一个新的数组
+          //参数    回调函数（同步的回调）
+                    //回调函数的参数：当前项  当前项的索引  当前遍历的数组
+                    //功能：对遍历的每一项执行回调函数
+                    //返回值：返回的是一个布尔值，（布尔值，条件表达式）,根据这个布尔值的真假来决定当前遍历的这项
+                    // 要不要收集到新数组当中
+          //返回值  返回的是新的数组
+
+
+          // 什么是运算符 什么是表达式
+          // 参与运算的符号是运算符
+          // 由变量或者常量和运算符组成的式子就是表达式  表达式都是有值的
+
+          //不是箭头函数 
+          // let arr = persons.filter(function(item,index){
+          //   return item.name.indexOf(keyword) !== -1
+          // })
+          //箭头函数   
+          let arr = persons.filter(item => item.name.indexOf(keyword) !== -1)
+
+          
+          //在过滤的基础上排序完成再返回
+          
+          // if(sortType === 1){
+          //   return a.age - b.age
+          // }else{
+          //   return b.age - a.age
+          // }
+          if(sortType !== 0){
+            arr.sort((a,b) => sortType === 1? a.age - b.age : b.age - a.age)
+          }
+
+          return arr
+        }
+      }
+    })
+  </script>
+</body>
+</html>
