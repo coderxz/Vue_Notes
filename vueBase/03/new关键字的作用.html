@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Dog(name,age){
+      this.name = name
+      this.age = age
+      var b = 20
+      function aa(){
+        console.log(b)
+      }
+      console.dir(aa)
+      aa()
+    }
+
+    var d1 = new Dog('旺财',3)
+    console.log(d1.name)
+
+
+    console.dir(Dog)
+
+    //执行上下文（执行的时候）   
+    // 执行上下文是程序在执行过程当中所依赖的环境，分为全局执行上下文和函数执行上下文
+    // 执行上下文分为创建阶段和执行阶段
+
+    
+
+  </script>
+</body>
+</html>

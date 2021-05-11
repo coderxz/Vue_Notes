@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p v-upper="msg"></p>
+  </div>
+  <script src="./js/vue.js"></script>
+  <script src="./myPlugin.js"></script>
+  <script>
+
+    Vue.use(MyPlugin)  //这句话贼重要  声明使用插件 本质是在自动调用插件当中的install方法
+
+
+    Vue.myGlobalMethod()
+
+
+
+    const vm = new Vue({
+      el:'#app',
+      data(){
+        return {
+          msg:'i love you~'
+        }
+      }
+    })
+
+
+    vm.$myMethod()
+  </script>
+</body>
+</html>

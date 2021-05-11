@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .box{
+      width: 300px;
+      height: 500px;
+      background-color: hotpink;
+    }
+
+    .slide-enter{
+      height: 0;
+      opacity: 0;
+      background-color: black;
+    }
+
+    .slide-enter-to{
+      height: 500px;
+      opacity: 1;
+      background-color: hotpink;
+    }
+
+    .slide-enter-active{
+      transition: all 5s;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div id="app">
+
+    <transition name="slide">
+      <div class="box" v-show="isShow"></div>
+    </transition>
+    
+
+
+    <button @click="isShow = !isShow">点击切换</button>
+  </div>
+  <script src="./js/vue.js"></script>
+  <script>
+    new Vue({
+      el:'#app',
+      data(){
+        return{
+          isShow:true
+        }
+      }
+    })
+  </script>
+</body>
+</html>
