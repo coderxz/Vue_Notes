@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    li{
+      background-color: #000;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div ref="pp" v-text="msg">
+
+    </div>
+    <button @click="change">改变</button>
+  </div>
+  </div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.3/vue.common.dev.js"></script>
+  <script>
+    const vm = new Vue({
+      el:'#app',
+      data() {
+        return {
+          msg:'123'
+        }
+      },
+      methods:{
+        change(){
+          this.msg = '456'
+          console.log(this.$refs.pp.innerHTML);//此时vm的值和页面的值已经更新了，但是打印出来最新的值打印的还是旧的值，此时就需要用到nextTick
+          this.$nextTick().then(res=>{//方法一：使用.then
+            console.log(res.msg);
+          })
+          this.$nextTick(function(){//方法二：使用回调函数形式
+            console.log(this.msg);
+          })
+        }
+      }
+    })
+  </script>
+</body>
+</html>
